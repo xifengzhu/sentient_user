@@ -13,6 +13,7 @@ How often have you needed to access the current user in your models?  This happe
 == Usage
 include SentientUser in your model(maybe it will be User/Admin/Role)
 define a before filter in your application controller to set your user/admin/role
+
 ```
 # example
 before_filter :set_current_user
@@ -21,6 +22,7 @@ def set_current_user
   User.current = current_user
   # make sure you have the current_user method
 end
+
 ```
 
 == Assumptions and limitations
