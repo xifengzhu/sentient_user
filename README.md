@@ -1,4 +1,4 @@
-= sentient_user
+# sentient_user
 
 {<img src="https://secure.travis-ci.org/bokmann/sentient_user.png" />}[http://travis-ci.org/bokmann/sentient_user]
 
@@ -10,7 +10,7 @@ How often have you needed to access the current user in your models?  This happe
 * This concept generally breaks in the console, where there is no controller to set the user.  This gem adds a make_current method on the user instance, so you can choose to find a user and execute the current_user method.  That could be really useful in rake tasks, for instance.
 
 
-== Usage
+## Usage
 include SentientUser in your model(maybe it will be User/Admin/Role)
 define a before filter in your application controller to set your user/admin/role
 
@@ -25,14 +25,14 @@ end
 
 ```
 
-== Assumptions and limitations
+## Assumptions and limitations
 * You have a current_user or others method available to your controllers
 * You will write your own tests to cover this code.
 
 If those assumptions don't work for you, feel free to unpack and hack.  It's simple enough code to change.  I purposefully didn't want to complicate it with an initializer, several config options, etc. as all that would blur this delightfully simple piece of code.
 
 
-== Note on Patches/Pull Requests
+## Note on Patches/Pull Requests
 
 * Fork the project.
 * Make your feature addition or bug fix.
@@ -42,6 +42,6 @@ If those assumptions don't work for you, feel free to unpack and hack.  It's sim
   (if you want to have your own version, that is fine but please bump the version in a commit by itself which I can ignore when I pull)
 * Send me a pull request. Bonus points for topic branches.
 
-== Copyright
+## Copyright
 
 Copyright (c) 2010 bokmann. See LICENSE for details.
