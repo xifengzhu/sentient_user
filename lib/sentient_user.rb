@@ -5,7 +5,7 @@ module SentientUser
   def self.included(base)
     base.class_eval {
       def self.current
-        RequestStore.store[:user]
+        RequestStore.store[self.name.downcase.to_sym]
       end
 
       def self.current=(o)
@@ -14,16 +14,16 @@ module SentientUser
                 "Expected an object of class '#{self}', got #{o.inspect}")
         end
 
-        RequestStore.store[:user] = o
+        RequestStore.store[self.name.downcase.to_sym] = o
       end
 
       def make_current
-        RequestStore.store[:user] = self
+        RequestStore.store[self.name.downcase.to_sym] = self
       end
 
       def current?
-        !RequestStore.store[:user].nil? &&
-          self.id == RequestStore.store[:user].id
+        !RequestStore.store[self.name.downcase.to_sym].nil? &&
+          self.id == RequestStore.store[self.name.downcase.to_sym].id
       end
 
       def self.do_as(user, &block)
@@ -37,16 +37,6 @@ module SentientUser
         end
 
         response
-      end
-    }
-  end
-end
-
-module SentientController
-  def self.included(base)
-    base.class_eval {
-      before_filter do |c|
-        User.current = c.send(:current_user)
       end
     }
   end

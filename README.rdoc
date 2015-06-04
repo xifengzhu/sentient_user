@@ -11,12 +11,20 @@ How often have you needed to access the current user in your models?  This happe
 
 
 == Usage
-include SentientUser in your user model
-include SentientController in your application controller
+include SentientUser in your model(maybe it will be User/Admin/Role)
+define a before filter in your application controller to set your user/admin/role
+```
+# example
+before_filter :set_current_user
+
+def set_current_user
+  User.current = current_user
+  # make sure you have the current_user method
+end
+```
 
 == Assumptions and limitations
-* Your user model is called 'User'.
-* You have a current_user method available to your controllers
+* You have a current_user or others method available to your controllers
 * You will write your own tests to cover this code.
 
 If those assumptions don't work for you, feel free to unpack and hack.  It's simple enough code to change.  I purposefully didn't want to complicate it with an initializer, several config options, etc. as all that would blur this delightfully simple piece of code.
